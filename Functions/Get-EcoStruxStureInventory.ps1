@@ -1,24 +1,25 @@
 function Get-EcoStruxStureInventory {
     <#
         .SYNOPSIS
-            C
+            Queries API for Inventory Objects
         .DESCRIPTION
-            C
+            Queries EcoStruxSture API with provided Organization and API Key to gather Inventory Objects
         .PARAMETER APIKey
             API Key needed to access EcoStruxSture API
         .EXAMPLE
-            Get-EcoStruxStureInventory -APIKey <KEY>
+            Get-EcoStruxStureInventory -APIKey <KEY> -Organization <ORGANIZATION>
     #>
     [CmdletBinding()]
     Param(
-        [Parameter(Mandatory = $true)]$APIKey
+        [Parameter(Mandatory = $true)]$APIKey,
+        [Parameter(Mandatory = $true)]$Organization
     ) 
     BEGIN { 
         $headers = @{Authorization = "Bearer $apikey" }
     } #BEGIN
 
     PROCESS {
-           $Inventory = Invoke-WebRequest -Uri "https://api.ecostruxureit.com/rest/v1/organizations/6f51efe2-984a-43c0-8894-97c71b2b7141/inventory" -ContentType "application/json" -Headers $headers
+           $Inventory = Invoke-WebRequest -Uri "https://api.ecostruxureit.com/rest/v1/organizations/$Organization/inventory" -ContentType "application/json" -Headers $headers
     } #PROCESS
 
     END { 
