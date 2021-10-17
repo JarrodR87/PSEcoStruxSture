@@ -1,4 +1,4 @@
-# JKR-EcoStruxSture
+# PSEcoStruxSture
 Used for interacting with APC EcoStruxSture API
 
 ## Get-EcoStruxStureInventory
